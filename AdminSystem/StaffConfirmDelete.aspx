@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    This is staff confirm/delete
     <form id="form1" runat="server">
         <div>
         </div>
