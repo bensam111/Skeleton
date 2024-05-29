@@ -9,7 +9,7 @@ namespace ClassLibrary
         }
 
         public bool Active { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         public DateTime Hiredate { get; set; }
         public string Email { get; set; }
         public string Position { get; set; }
