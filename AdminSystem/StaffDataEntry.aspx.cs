@@ -21,7 +21,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnStaff.Name = txtNameId.Text;
         AnStaff.Position = txtPositionId.Text;
         AnStaff.Email = txtEmailId.Text;
-        AnStaff.Hiredate = Convert.ToDateTime(txtHiredateId.Text);
+        AnStaff.Hiredate = Convert.ToDateTime(DateTime.Now);
         AnStaff.Phone = txtPhoneId.Text;
         //store the staff in the session object
         Session["AnStaff"] = AnStaff;
