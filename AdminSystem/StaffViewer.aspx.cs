@@ -16,13 +16,9 @@ public partial class _1Viewer : System.Web.UI.Page
         AnStaff = (clsStaff)Session["AnStaff"];
         //display the name for this entry
         Response.Write(AnStaff.Name);
-        Response.Write(AnStaff.Phone);
         Response.Write(AnStaff.Position);
-        Response.Write(AnStaff.Hiredate);
         Response.Write(AnStaff.Email);
-        
-
-
-
+        Response.Write(AnStaff.Phone);
+        Response.Write(AnStaff.Hiredate);
     }
 }
