@@ -116,7 +116,7 @@ namespace Testing1
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffId = 5;
+            Int32 StaffId = 7;
             //invoke the method
             Found = Anstaff.Find(StaffId);
             //test to see if the result is true 
@@ -135,11 +135,11 @@ namespace Testing1
             //create a Boolean variable to record if the date is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StaffId = 5;
+            Int32 StaffId = 7;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the staff id 
-            if (AnStaff.StaffId != 5)
+            if (AnStaff.StaffId != 7)
             {
                 OK = false;
 
@@ -153,9 +153,9 @@ namespace Testing1
             clsStaff AnStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 5;
+            Int32 StaffId = 7;
             Found = AnStaff.Find(StaffId);
-            if (AnStaff.Name != "Test Name")
+            if (AnStaff.Name != "Oyin Dumbo")
             {
                 OK = false;
             }
@@ -165,11 +165,11 @@ namespace Testing1
         public void TestPositionFound()
         {
             clsStaff AnStaff = new clsStaff();
-            Boolean Found = false;
+            Boolean found = false;
             Boolean OK = true;
-            Int32 StaffId = 5;
-            Found = AnStaff.Find(StaffId);
-            if (AnStaff.Position != "Test Position")
+            Int32 StaffId = 7;
+            found = AnStaff.Find(StaffId);
+            if (AnStaff.Position != "stock")
             {
                 OK = false;
             }
@@ -181,9 +181,9 @@ namespace Testing1
             clsStaff AnStaff = new clsStaff();
             Boolean found = false;
             Boolean OK = true;
-            Int32 StaffId = 5;
+            Int32 StaffId = 7;
             found = AnStaff.Find(StaffId);
-            if (AnStaff.Email != "asd@gmail.com")
+            if (AnStaff.Email != "oyin@gmail.com")
             {
                 OK = false;
             }
@@ -195,9 +195,9 @@ namespace Testing1
             clsStaff AnStaff = new clsStaff();
             Boolean found = false;
             Boolean OK = true;
-            Int32 StaffId = 5;
+            Int32 StaffId = 7;
             found = AnStaff.Find(StaffId);
-            if (AnStaff.Phone != "1")
+            if (AnStaff.Phone != "07142523489")
             {
                 OK = false;
             }
@@ -209,9 +209,9 @@ namespace Testing1
             clsStaff AnStaff = new clsStaff();
             Boolean found = false;
             Boolean OK = true;
-            Int32 StaffId = 5;
+            Int32 StaffId = 7;
             found = AnStaff.Find(StaffId);
-            if (AnStaff.Hiredate != Convert.ToDateTime("02/06/2024"))
+            if (AnStaff.Hiredate != Convert.ToDateTime("02/05/2024"))
             {
                 OK = false;
             }
@@ -223,7 +223,7 @@ namespace Testing1
             clsStaff AnStaff = new clsStaff();
             Boolean found = false;
             Boolean OK = true;
-            Int32 StaffId = 5;
+            Int32 StaffId = 7;
             found = AnStaff.Find(StaffId);
             if (AnStaff.Active != true)
             {
