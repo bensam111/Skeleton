@@ -15,6 +15,8 @@
         <p>
             <asp:Label ID="lblNameId" runat="server" style="z-index: 1; left: 10px; top: 53px; position: absolute" Text="Name " width="52px"></asp:Label>
             <asp:TextBox ID="txtNameId" runat="server" style="z-index: 1; left: 95px; top: 53px; position: absolute; width: 169px" height="18px" ></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnFind" runat="server" Height="34px" OnClick="btnFind_Click" Text="Find" Width="47px" />
         </p>
         <asp:Label ID="lblPositionId" runat="server" style="z-index: 1; left: 10px; top: 94px; position: absolute; bottom: 563px" Text="Position" width="52px"></asp:Label>
         <asp:TextBox ID="txtPositionId" runat="server" style="z-index: 1; left: 94px; top: 91px; position: absolute; width: 169px" height="18px"></asp:TextBox>
@@ -40,6 +42,10 @@
         <p>
             <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" style="z-index: 1; left: 30px; top: 330px; position: absolute" Text="OK" height="26px" width="60px" />
         </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
