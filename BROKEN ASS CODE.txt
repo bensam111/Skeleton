@@ -1,0 +1,58 @@
+[TestMethod]
+public void hiredateExtremeMin()
+{
+    clsStaff AnStaff = new clsStaff();
+    String Error = "";
+    DateTime TestDate;
+    TestDate = DateTime.Now.Date;
+    TestDate = TestDate.AddYears(-100);
+    string hiredate = TestDate.ToString();
+    Error = AnStaff.Valid(name,position, email, phone, hiredate);
+    Assert.AreNotEqual(Error, "");
+}
+[TestMethod]
+public void hiredateMinLessOne()
+{
+    clsStaff AnStaff = new clsStaff();
+    String Error = "";
+    DateTime TestDate;
+    TestDate = DateTime.Now.Date;
+    TestDate = TestDate.AddYears(-100);
+    string hiredate = TestDate.ToString();
+    Error = AnStaff.Valid(name, position, email,phone,hiredate);
+    Assert.AreNotEqual(Error, "");
+}
+[TestMethod]
+public void hiredateMin()
+{
+    clsStaff AnStaff = new clsStaff();
+    String Error = "";
+    DateTime TestDate;
+    TestDate = DateTime.Now.Date;
+    string hiredate = TestDate.ToString();
+    Error = AnStaff.Valid(name,position,email,phone,hiredate);
+    Assert.AreNotEqual(Error, "");
+}
+[TestMethod]
+public void hiredateMinPlusOne()
+{
+    clsStaff AnStaff = new clsStaff();
+    String Error = "";
+    DateTime TestDate;
+    TestDate = DateTime.Now.Date;
+    TestDate = TestDate.AddDays(1);
+    string hiredate = TestDate.ToString();
+    Error = AnStaff.Valid(name, position, email, phone, hiredate);
+    Assert.AreNotEqual(Error, "");
+}
+[TestMethod]
+public void hiredateExtremeMax()
+{
+    clsStaff AnStaff = new clsStaff();
+    String Error = "";
+    DateTime  TestDate;
+    TestDate = DateTime.Now.Date;
+    TestDate = TestDate.AddYears(100);
+    string hiredate = TestDate.ToString();
+    Error = AnStaff.Valid(name,position,email,phone,hiredate);
+    Assert.AreNotEqual(Error, "");
