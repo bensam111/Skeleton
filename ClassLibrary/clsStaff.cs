@@ -131,5 +131,31 @@ namespace ClassLibrary
 
             }
         }
+
+        public string Valid(string name, string position, string email, string phone, string hiredate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            DateTime DateTemp;
+            //if the name is blank
+            if (name.Length == 0)
+            {
+                //record the error
+                Error = Error + "The name may not be blank : ";
+            }
+            //if the name is greater than 6 characters
+            if (name.Length > 6)
+            {
+                //record the error
+                Error = Error + "The name must be less than 6 characters";
+            }
+            DateTemp = Convert.ToDateTime(hiredate);
+            if (DateTemp > DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the future";
+            }
+            //return any error messages
+            return Error;
+        }
     }
 }
