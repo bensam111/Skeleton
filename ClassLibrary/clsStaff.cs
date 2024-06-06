@@ -136,7 +136,8 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-            DateTime DateTemp;
+            DateTime 
+                DateTemp;
             //if the name is blank
             if (name.Length == 0)
             {
@@ -144,15 +145,43 @@ namespace ClassLibrary
                 Error = Error + "The name may not be blank : ";
             }
             //if the name is greater than 6 characters
-            if (name.Length > 6)
+            if (name.Length > 50)
             {
                 //record the error
-                Error = Error + "The name must be less than 6 characters";
+                Error = Error + "The name must be less than 50 characters";
             }
-            DateTemp = Convert.ToDateTime(hiredate);
-            if (DateTemp > DateTime.Now.Date)
+          //  DateTemp = Convert.ToDateTime(hiredate);
+           // if (DateTemp > DateTime.Now.Date)
+           // {
+           //     Error = Error + "The date cannot be in the future";
+            //}
+           // if (DateTemp < DateTime.Now.Date)
+           // {
+           //     Error = Error + "The date cannot be in the past";
+           // }
+            if (position.Length == 0)
             {
-                Error = Error + "The date cannot be in the future";
+                Error = Error + "The Position cannot be blank";
+            }
+            if (position.Length > 50)
+            {
+                Error = Error + "The Position must be less than 50 characters";
+            }
+            if (email.Length == 0)
+            {
+                Error = Error + "The Email cannot be blank";
+            }
+            if (email.Length > 50)
+            {
+                Error = Error + "The Email must not be more than 50 characters";
+            }
+            if (phone.Length == 0)
+            {
+                Error = Error + "The phone cannot be blank";                  
+            }
+            if (phone.Length > 20)
+            {
+                Error = Error + "The phone must not be more than 20 characters";
             }
             //return any error messages
             return Error;

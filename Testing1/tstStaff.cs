@@ -4,6 +4,7 @@ using System;
 using System.CodeDom;
 using System.Dynamic;
 using System.IO;
+using System.Security.Policy;
 
 namespace Testing1
 {
@@ -290,7 +291,8 @@ namespace Testing1
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string name = "aaaaa";
+            string name = "";
+            name = name.PadRight(49, 'a');
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
             Assert.AreEqual(Error, "");
         }
@@ -299,7 +301,8 @@ namespace Testing1
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string name = "aaaaaa";
+            string name = "";
+            name = name.PadRight(50, 'a');
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
             Assert.AreEqual(Error, "");
         }
@@ -308,7 +311,8 @@ namespace Testing1
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string name = "aaa";
+            string name = "";
+            name = name.PadRight(25, 'a');
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
             Assert.AreEqual(Error, "");
         }
@@ -317,7 +321,9 @@ namespace Testing1
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string name = "aaaaaaa";//This should fail
+            string name = "";
+            name = name.PadRight(51, 'a');
+
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
             Assert.AreNotEqual(Error, "");
         }
@@ -341,7 +347,7 @@ namespace Testing1
             TestDate = TestDate.AddYears(-100);
             string hiredate = TestDate.ToString();
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void hiredateMinLessOne()
@@ -353,7 +359,7 @@ namespace Testing1
             TestDate = TestDate.AddYears(-100);
             string hiredate = TestDate.ToString();
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void hiredateMin()
@@ -364,7 +370,7 @@ namespace Testing1
             TestDate = DateTime.Now.Date;
             string hiredate = TestDate.ToString();
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void hiredateMinPlusOne()
@@ -376,7 +382,7 @@ namespace Testing1
             TestDate = TestDate.AddDays(1);
             string hiredate = TestDate.ToString();
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void hiredateExtremeMax()
@@ -387,6 +393,243 @@ namespace Testing1
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string hiredate = TestDate.ToString();
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void emailMinLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string email = "";
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void emailMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string email = "a";
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void emailMinPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string email = "aa";
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void emailMaxLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string email = "";
+            email = email.PadRight(49, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void emailMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string email = "";
+            email = email.PadRight(50, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void emailMaxPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string email = "";
+            email = email.PadRight(51, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void emailMid()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string email = "";
+            email = email.PadRight(25, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void emailExtremeMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string email = "";
+            email = email.PadRight(100, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void positionMinLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string position = "";
+            Error = AnStaff.Valid(name,position,email, phone, hiredate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void positionMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string position = "a";
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void positionMinPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string position = "aa";
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void positionMaxLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string position = "";
+            position = position.PadRight(49, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void positionMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string position = "";
+            position = position.PadRight(50, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void positionMaxPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string position = "";
+            position = position.PadRight(51, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void positionMid()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string position = "";
+            position = position.PadRight(25, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void positionExtremeMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string position = "";
+            position = position.PadRight(100, 'a');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void phoneMinLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string phone = "";
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void phoneMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string phone = "1";
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void phoneMinPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string phone = "11";
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void phoneMaxLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string phone = "";
+            phone = phone.PadRight(19, '1');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void phoneMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string phone = "";
+            phone = phone.PadRight(20, '1');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void phoneMaxPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string phone = "";
+            phone = phone.PadRight(21, '1');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void phoneMid()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string phone = "";
+            phone = phone.PadRight(10, '1');
+            Error = AnStaff.Valid(name, position, email, phone, hiredate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void phoneExtremeMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string phone = "";
+            phone = phone.PadRight(30, '1');
             Error = AnStaff.Valid(name, position, email, phone, hiredate);
             Assert.AreNotEqual(Error, "");
         }

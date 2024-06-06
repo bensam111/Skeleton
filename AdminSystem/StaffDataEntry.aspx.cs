@@ -8,25 +8,80 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false) 
+        {
+            if (StaffId != -1)
+            {
+                DisplayStaff();
+            }
+        }
+
+    }
+    void DisplayStaff()
+    {
+        clsStaffCollection Staffbook = new clsStaffCollection();
+        Staffbook.ThisStaff.Find(StaffId);
+        txtStaffId.Text = Staffbook.ThisStaff.StaffId.ToString();
+        txtNameId.Text = Staffbook.ThisStaff.Name.ToString();
+        txtPositionId.Text = Staffbook.ThisStaff.Position.ToString();
+        txtEmailId.Text = Staffbook.ThisStaff.Email.ToString();
+        txtPhoneId.Text = Staffbook.ThisStaff.Phone.ToString();
+        txtHiredateId.Text = Staffbook.ThisStaff.Hiredate.ToString();
+        chkActive.Checked = Staffbook.ThisStaff.Active; 
+
 
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
-        //  create a new instance of clsStaff
         clsStaff AnStaff = new clsStaff();
-        //capture the Name
-        AnStaff.Name = txtNameId.Text;
-        AnStaff.Position = txtPositionId.Text;
-        AnStaff.Email = txtEmailId.Text;
-        AnStaff.Hiredate = Convert.ToDateTime(DateTime.Now);
-        AnStaff.Phone = txtPhoneId.Text;
-        //store the staff in the session object
-        Session["AnStaff"] = AnStaff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        
+        string name = txtNameId.Text;
+        string position = txtPositionId.Text;
+        string email = txtEmailId.Text;
+        string phone = txtPhoneId.Text;
+        string hiredate = txtHiredateId.Text;
+        string active = chkActive.Text;
+        string Error = "";
+        Error = AnStaff.Valid( name, position, email, phone, hiredate);
+        if (Error == "")
+        {
+            //capture the Name
+            AnStaff.StaffId = StaffId;
+            AnStaff.Name = name;
+            AnStaff.Position = position;
+            AnStaff.Email = email;
+            AnStaff.Hiredate = Convert.ToDateTime(DateTime.Now);
+            AnStaff.Phone = phone;
+            AnStaff.Active = chkActive.Checked;
+            clsStaffCollection StaffList = new clsStaffCollection();
+
+
+            if (StaffId == -1)
+            {
+                StaffList.ThisStaff = AnStaff;
+                StaffList.Add();
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(StaffId);
+                StaffList.ThisStaff = AnStaff;
+                StaffList.Update();
+
+            }
+            Response.Redirect("StaffList.aspx");
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+            
+        
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
